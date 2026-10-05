@@ -12,11 +12,11 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import Link from "next/link";
 import { useState } from "react";
 
 const SignInPage = () => {
-
-    const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +38,6 @@ const SignInPage = () => {
     <div>
       <h2>Please Sign In</h2>
       <Form className="flex w-96 flex-col gap-4" onSubmit={onSubmit}>
-
         {/* Email */}
         <TextField
           isRequired
@@ -57,8 +56,10 @@ const SignInPage = () => {
         </TextField>
 
         {/* Password toggle */}
-        <TextField className="w-full max-w-[280px]" name="password"
-        validate={(value) => {
+        <TextField
+          className="w-full max-w-[280px]"
+          name="password"
+          validate={(value) => {
             if (value.length < 8) {
               return "Password must be at least 8 characters";
             }
@@ -69,10 +70,12 @@ const SignInPage = () => {
               return "Password must contain at least one number";
             }
             return null;
-          }}>
+          }}
+        >
           <Label>Password</Label>
           <InputGroup>
             <InputGroup.Input
+              placeholder="Enter Your Password"
               className="w-full max-w-[280px]"
               type={isVisible ? "text" : "password"}
             />
@@ -92,13 +95,11 @@ const SignInPage = () => {
               </Button>
             </InputGroup.Suffix>
           </InputGroup>
-          {/* <Input placeholder="Enter your password" /> */}
           <Description>
             Must be at least 8 characters with 1 uppercase and 1 number
           </Description>
           <FieldError />
         </TextField>
-
 
         <div className="flex gap-2">
           <Button type="submit">
@@ -110,6 +111,12 @@ const SignInPage = () => {
           </Button>
         </div>
       </Form>
+      <p>
+        <small>
+          Forgot Password? <Link className="text-blue-400 underline"
+          href="/forgot-password">Click here</Link>
+        </small>
+      </p>
     </div>
   );
 };
