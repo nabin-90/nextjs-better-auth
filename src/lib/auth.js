@@ -46,7 +46,7 @@ export const auth = betterAuth({
     },
     sendOnSignUp: true,
     autoSignInAfterVerification: true,
-    expiresIn: 7 * 24 * 3600, // 7 days
+    expiresIn: 60*5 //5 minute
   },
 
   socialProviders: {
